@@ -178,7 +178,7 @@ It displays:
 
 
 
-### 10. Help
+### 9. Help
 
 Shows the list of available commands.
 
@@ -188,7 +188,7 @@ help
 
 ---
 
-### 11. Quit
+### 10. Quit
 
 Closes the editor.
 
