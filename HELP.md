@@ -176,24 +176,7 @@ It displays:
 
 ---
 
-### 9. Undo
 
-Cancels your most recent change.
-
-```text
-undo
-```
-
-**Example:**
-
-```text
-editor> delete 2
-editor> undo
-```
-
-The deleted line will be restored.
-
----
 
 ### 10. Help
 
