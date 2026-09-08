@@ -5,12 +5,10 @@
 #include "editor.h"
 #include "features.h"
 
-
 #define MAX_COMMAND 1000
 
 
-/* ================= HELP ================= */
-
+/* Display all available commands */
 void showHelp(void)
 {
     printf("\n============== HELP ==============\n");
@@ -26,7 +24,6 @@ void showHelp(void)
     printf("replace <old> <new> Replace text\n");
 
     printf("stats               Show statistics\n");
-    printf("undo                Undo last action\n");
 
     printf("help                Show this help\n");
     printf("quit                Exit editor\n");
@@ -35,8 +32,7 @@ void showHelp(void)
 }
 
 
-/* ================= COMMAND PROCESSING ================= */
-
+/* Process commands entered by the user */
 void processCommand(char *command)
 {
     char operation[50];
@@ -59,8 +55,6 @@ void processCommand(char *command)
             return;
         }
 
-        createUndoState();
-
         insertLine(position);
     }
 
@@ -76,8 +70,6 @@ void processCommand(char *command)
             printf("Usage: delete <line>\n");
             return;
         }
-
-        createUndoState();
 
         deleteLine(position);
     }
@@ -119,8 +111,6 @@ void processCommand(char *command)
             return;
         }
 
-        createUndoState();
-
         loadFile(filename);
     }
 
@@ -157,8 +147,6 @@ void processCommand(char *command)
             return;
         }
 
-        createUndoState();
-
         replaceText(oldText, newText);
     }
 
@@ -168,14 +156,6 @@ void processCommand(char *command)
     else if (strcmp(operation, "stats") == 0)
     {
         showStatistics();
-    }
-
-
-    /* ---------- UNDO ---------- */
-
-    else if (strcmp(operation, "undo") == 0)
-    {
-        undoLastAction();
     }
 
 
@@ -207,8 +187,7 @@ void processCommand(char *command)
 }
 
 
-/* ================= MAIN ================= */
-
+/* Main function */
 int main(void)
 {
     char command[MAX_COMMAND];
@@ -219,10 +198,6 @@ int main(void)
     printf("========================================\n");
 
     printf("Type 'help' to see available commands.\n");
-
-    /*
-        Main command loop.
-    */
 
     while (1)
     {
