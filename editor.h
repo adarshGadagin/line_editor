@@ -12,3 +12,4 @@ void insertLine(int position);
 void deleteLine(int position);
 void displayDocument(void);
 
+#endif
