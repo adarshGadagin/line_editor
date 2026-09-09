@@ -17,23 +17,23 @@ A lightweight, command-line text editor written in C for the **Portfolio Buildin
 ## ✨ Features Implemented
 
 ### **Core Features**
-* **Insert Line (`I`)**: Inserts text at a specific line number, automatically shifting subsequent lines down.
-* **Delete Line (`D`)**: Removes text at a specific line number and shifts remaining lines up.
-* **Display Document (`P`)**: Prints the full document with line numbers.
-* **Save File (`S`)**: Writes current in-memory lines to a text file.
-* **Load File (`O`)**: Loads lines from a text file directly into memory.
+* **Insert Line (`insert<line number>`)**: Inserts text at a specific line number, automatically shifting subsequent lines down.
+* **Delete Line (`delete<line number>`)**: Removes text at a specific line number and shifts remaining lines up.
+* **Display Document (`display`)**: Prints the full document with line numbers.
+* **Save File (`save<file>`)**: Writes current in-memory lines to a text file.
+* **Load File (`load<file>`)**: Loads lines from a text file directly into memory.
 
 ### **Bonus Features**
-* **Search (`F`)**: Locates and lists line numbers containing a specified search phrase or keyword.
-* **Find & Replace (`R`)**: Replaces target phrases across the document with new text.
-
+* **Search (`search<text>`)**: Locates and lists line numbers containing a specified search phrase or keyword.
+* **Find & Replace (`replace<old><new>`)**: Replaces target phrases across the document with new text.
+* **Stats(`stats`)**: Displays number of lines, words and characters.
+* **Help (`help`)**: Displays all commands. 
 ---
 
 ## 🏗️ Data Structure Choice
 
-* **Dynamic Array of Strings (`char **lines`)**:
-  * **Justification**: Allows fast $O(1)$ random access to lines by index/line number, making print and targeted edits efficient. Dynamic memory reallocation (`realloc`) ensures memory scales seamlessly as lines are added.
-
+* **Static 2D Character Array (`char lines[MAX_LINES][MAX_LENGTH]`)**: Provides $O(1)$ instant random access to any line by index while simplifying memory management without heap allocation overhead.
+* **Trade-off**: Requires pre-defined line and length bounds (`MAX_LINES` and `MAX_LENGTH`), using fixed row-shifting via `strcpy()` for insertion and deletion operations.
 ---
 
 ## 🛠️ Compilation & Execution
